@@ -1,0 +1,18 @@
+apply plugin: 'com.android.library'
+
+android {
+  compileSdkVersion 20
+  buildToolsVersion "20.0.0"
+
+  defaultConfig {
+    applicationId "com.prolific.creditcard.android"
+    minSdkVersion 16
+    targetSdkVersion 20
+    versionCode 1
+    versionName "1.0"
+  }
+}
+
+dependencies {
+  compile project(':creditcard-core')
+}
