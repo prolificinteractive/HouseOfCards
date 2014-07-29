@@ -1,6 +1,5 @@
 package com.prolific.creditcard;
 
-import android.os.SystemClock;
 import java.security.InvalidParameterException;
 import java.util.LinkedHashMap;
 import java.util.Map;
