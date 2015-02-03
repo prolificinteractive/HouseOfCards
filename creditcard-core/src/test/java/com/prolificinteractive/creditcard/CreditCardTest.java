@@ -15,11 +15,13 @@ import static org.junit.Assert.fail;
 
 public class CreditCardTest {
 
-  static final CreditCardUtil CARD_UTIL = new CreditCardUtil(VISA,
+  static final CreditCardUtil CARD_UTIL = new CreditCardUtil(
+      VISA,
       MASTERCARD,
       DISCOVER,
       AMERICAN_EXPRESS,
-      DINERS_CLUB);
+      DINERS_CLUB
+  );
 
   static final Map<CreditCard, String[]> CARD_MAP = new LinkedHashMap<CreditCard, String[]>() {{
     put(VISA, new String[] { "4444444444444448", "4055011111111111", "4012888888881881" });
@@ -65,7 +67,7 @@ public class CreditCardTest {
     for (CreditCard card : CARD_MAP.keySet()) {
       for (Map.Entry<CreditCard, String[]> entry : CARD_MAP.entrySet()) {
         for (String s : entry.getValue()) {
-          boolean valid = CARD_UTIL.validateCard(s, card);
+          boolean valid = CreditCardUtil.validateCard(s, card);
           if (card == entry.getKey()) {
             assertTrue(valid);
           } else {
@@ -82,7 +84,7 @@ public class CreditCardTest {
       for (Map.Entry<String, String> e : entry.getValue().entrySet()) {
         String input = e.getKey();
         String expected = e.getValue();
-        assertEquals(expected, CARD_UTIL.formatForViewing(input, card));
+        assertEquals(expected, CreditCardUtil.formatForViewing(input, card));
       }
     }
   }

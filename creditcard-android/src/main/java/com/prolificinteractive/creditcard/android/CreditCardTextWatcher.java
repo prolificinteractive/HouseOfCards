@@ -8,6 +8,9 @@ import com.prolificinteractive.creditcard.CreditCardUtil;
 
 import static com.prolificinteractive.creditcard.CreditCardUtil.*;
 
+/**
+ * A {@linkplain android.text.TextWatcher} that will format credit card numbers as the user types
+ */
 public class CreditCardTextWatcher implements TextWatcher {
 
   final CreditCardUtil cardUtil;
@@ -16,14 +19,31 @@ public class CreditCardTextWatcher implements TextWatcher {
   int cursorPos = 0;
   int editVelocity = 0;
 
+  /**
+   * Create an instance that will use the provided {@linkplain com.prolificinteractive.creditcard.CreditCardUtil} for validation and formatting
+   * @param creditCardUtil an instance to use
+   */
   public CreditCardTextWatcher(CreditCardUtil creditCardUtil) {
     cardUtil = creditCardUtil;
   }
 
+  /**
+   * Create an instance that will only format for the provided {@linkplain com.prolificinteractive.creditcard.CreditCard}s
+   * @param cards cards to format for
+   */
   public CreditCardTextWatcher(CreditCard... cards) {
     this(new CreditCardUtil(cards));
   }
 
+  /**
+   * Create an instance that will use all major CreditCard types
+   *
+   * @see com.prolificinteractive.creditcard.CreditCardUtil#VISA
+   * @see com.prolificinteractive.creditcard.CreditCardUtil#MASTERCARD
+   * @see com.prolificinteractive.creditcard.CreditCardUtil#AMERICAN_EXPRESS
+   * @see com.prolificinteractive.creditcard.CreditCardUtil#DISCOVER
+   * @see com.prolificinteractive.creditcard.CreditCardUtil#DINERS_CLUB
+   */
   public CreditCardTextWatcher() {
     this(
         VISA,
@@ -52,7 +72,7 @@ public class CreditCardTextWatcher implements TextWatcher {
   }
 
   void setText(Editable s) {
-    String formattedText = CreditCardUtil.formatForViewing(s, cardUtil.findCardType(s.toString()));
+    String formattedText = cardUtil.formatForViewing(s);
     s.replace(0, s.length(), formattedText);
 
     int i = cursorPos;

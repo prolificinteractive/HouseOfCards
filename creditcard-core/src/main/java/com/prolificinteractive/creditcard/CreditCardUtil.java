@@ -6,6 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
+/**
+ * A utility for validating and formatting credit card numbers
+ */
 public class CreditCardUtil {
 
   private static final int CARD_LENGTH_FOR_TYPE = 4;
@@ -35,14 +38,28 @@ public class CreditCardUtil {
 
   private final List<CreditCard> cards;
 
+  /**
+   * Create an instance that will only use the provided types to validate and format
+   * @param creditCards a list of types to use
+   */
   public CreditCardUtil(CreditCard... creditCards) {
     cards = new ArrayList<CreditCard>(Arrays.asList(creditCards));
   }
 
+  /**
+   * @param cardNumber The input to clean and format
+   * @return if cardNumber matches a CreditCard, a formatted cardNumber, otherwise a cleaned version of cardNumber
+   */
   public String formatForViewing(CharSequence cardNumber) {
     return formatForViewing(cardNumber, findCardType(cardNumber));
   }
 
+  /**
+   *
+   * @param cardNumber the input to clean and format
+   * @param card the CreditCard to format for, if possible
+   * @return if cardNumber matches card, a formatted cardNumber, otherwise a cleaned version of cardNumber
+   */
   public static String formatForViewing(CharSequence cardNumber, CreditCard card) {
     // make sure the cc isn't null
     if (cardNumber == null) {
@@ -85,14 +102,27 @@ public class CreditCardUtil {
     return format(cleanedCardNumber, length, format);
   }
 
+  /**
+   * @param card the input to validate
+   * @return true if card is a valid card for this instance's card types
+   */
   public boolean validateCard(CharSequence card) {
     return validateCard(card, findCardType(card));
   }
 
+  /**
+   * @param card the input to validate
+   * @param creditCard the card type to validate against
+   * @return true if card is a valid card for creditCard
+   */
   public static boolean validateCard(CharSequence card, CreditCard creditCard) {
     return creditCard.getVerifyPattern().matcher(card).matches();
   }
 
+  /**
+   * @param s the card number to find type of, can be partial
+   * @return the instance of CreditCard matching s, or null if no match
+   */
   public CreditCard findCardType(CharSequence s) {
     String cardNumber = clean(s);
     if (cardNumber.length() >= CARD_LENGTH_FOR_TYPE) {
@@ -108,10 +138,20 @@ public class CreditCardUtil {
     return null;
   }
 
+  /**
+   * @param cardNumber the input to clean
+   * @return a string containing only digits
+   */
   public static String clean(CharSequence cardNumber) {
     return cardNumber.toString().trim().replaceAll("[^\\d]", "");
   }
 
+  /**
+   * @param cleanedNumber a clean credit card number to format
+   * @param length the length to limit
+   * @param format an array of groups lengths
+   * @return a formatted version of cleanedNumber
+   */
   protected static String format(String cleanedNumber, int length, int[] format) {
     StringBuilder builder = new StringBuilder();
 
@@ -132,6 +172,9 @@ public class CreditCardUtil {
     return builder.toString();
   }
 
+  /**
+   * Simple implementation for {@linkplain com.prolificinteractive.creditcard.CreditCard}
+   */
   protected static class Card implements CreditCard {
 
     final Pattern typePattern;
