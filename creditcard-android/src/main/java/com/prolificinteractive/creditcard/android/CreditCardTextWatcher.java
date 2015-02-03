@@ -52,7 +52,7 @@ public class CreditCardTextWatcher implements TextWatcher {
   }
 
   void setText(Editable s) {
-    String formattedText = cardUtil.formatForViewing(s, cardUtil.findCardType(s.toString()));
+    String formattedText = CreditCardUtil.formatForViewing(s, cardUtil.findCardType(s.toString()));
     s.replace(0, s.length(), formattedText);
 
     int i = cursorPos;

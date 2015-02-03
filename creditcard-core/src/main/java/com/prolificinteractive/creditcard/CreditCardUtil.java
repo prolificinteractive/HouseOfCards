@@ -39,7 +39,11 @@ public class CreditCardUtil {
     cards = new ArrayList<CreditCard>(Arrays.asList(creditCards));
   }
 
-  public String formatForViewing(CharSequence cardNumber, CreditCard card) {
+  public String formatForViewing(CharSequence cardNumber) {
+    return formatForViewing(cardNumber, findCardType(cardNumber));
+  }
+
+  public static String formatForViewing(CharSequence cardNumber, CreditCard card) {
     // make sure the cc isn't null
     if (cardNumber == null) {
       throw new InvalidParameterException("cannot have null credit card number");
@@ -81,7 +85,11 @@ public class CreditCardUtil {
     return format(cleanedCardNumber, length, format);
   }
 
-  public boolean validateCard(CharSequence card, CreditCard creditCard) {
+  public boolean validateCard(CharSequence card) {
+    return validateCard(card, findCardType(card));
+  }
+
+  public static boolean validateCard(CharSequence card, CreditCard creditCard) {
     return creditCard.getVerifyPattern().matcher(card).matches();
   }
 
@@ -100,11 +108,11 @@ public class CreditCardUtil {
     return null;
   }
 
-  static String clean(CharSequence cardNumber) {
+  public static String clean(CharSequence cardNumber) {
     return cardNumber.toString().trim().replaceAll("[^\\d]", "");
   }
 
-  static String format(String cleanedNumber, int length, int[] format) {
+  protected static String format(String cleanedNumber, int length, int[] format) {
     StringBuilder builder = new StringBuilder();
 
     int start = 0;
@@ -124,7 +132,7 @@ public class CreditCardUtil {
     return builder.toString();
   }
 
-  static class Card implements CreditCard {
+  protected static class Card implements CreditCard {
 
     final Pattern typePattern;
     final Pattern verifyPattern;

@@ -89,7 +89,7 @@ public class CreditCardTest {
 
   @Test public void testExceptions() {
     try {
-      CARD_UTIL.formatForViewing(null, null);
+      CreditCardUtil.formatForViewing(null, null);
       fail();
     } catch (Exception e) {
       assertEquals(InvalidParameterException.class, e.getClass());
@@ -97,7 +97,7 @@ public class CreditCardTest {
     }
 
     try {
-      CARD_UTIL.formatForViewing("", new TestCard(null));
+      CreditCardUtil.formatForViewing("", new TestCard(null));
       fail();
     } catch (Exception e) {
       assertEquals(InvalidParameterException.class, e.getClass());
@@ -105,7 +105,7 @@ public class CreditCardTest {
     }
 
     try {
-      CARD_UTIL.formatForViewing("", new TestCard(new int[0]));
+      CreditCardUtil.formatForViewing("", new TestCard(new int[0]));
       fail();
     } catch (Exception e) {
       assertEquals(InvalidParameterException.class, e.getClass());
@@ -113,7 +113,7 @@ public class CreditCardTest {
     }
 
     try {
-      CARD_UTIL.formatForViewing("", new TestCard(new int[] { -1 }));
+      CreditCardUtil.formatForViewing("", new TestCard(new int[] { -1 }));
       fail();
     } catch (Exception e) {
       assertEquals(InvalidParameterException.class, e.getClass());
@@ -121,7 +121,7 @@ public class CreditCardTest {
     }
 
     try {
-      CARD_UTIL.formatForViewing("", new TestCard(new int[] { 0 }));
+      CreditCardUtil.formatForViewing("", new TestCard(new int[] { 0 }));
       fail();
     } catch (Exception e) {
       assertEquals(InvalidParameterException.class, e.getClass());
