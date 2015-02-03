@@ -1,6 +1,7 @@
 HouseOfCards
 ============
 
-Credit card validation
+Credit Card Validation
 =======
-![o-FRANK-UNDERWOOD-facebook.jpg](https://bitbucket.org/repo/gnL9zL/images/1112947080-o-FRANK-UNDERWOOD-facebook.jpg)
+
+![FRANK UNDERWOOD](http://img4.wikia.nocookie.net/__cb20140215085441/house-of-cards/images/9/9f/Season_2_Chapter_26.jpg)
