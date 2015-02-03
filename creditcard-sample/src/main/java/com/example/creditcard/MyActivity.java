@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.EditText;
 import com.prolific.creditcard.R;
-import com.prolific.creditcard.android.CreditCardTextWatcher;
+import com.prolificinteractive.creditcard.android.CreditCardTextWatcher;
 
 public class MyActivity extends Activity {
 

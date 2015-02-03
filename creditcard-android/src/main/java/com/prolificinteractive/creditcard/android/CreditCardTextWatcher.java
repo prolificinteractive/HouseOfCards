@@ -1,16 +1,12 @@
-package com.prolific.creditcard.android;
+package com.prolificinteractive.creditcard.android;
 
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
-import com.prolific.creditcard.CreditCard;
-import com.prolific.creditcard.CreditCardUtil;
+import com.prolificinteractive.creditcard.CreditCard;
+import com.prolificinteractive.creditcard.CreditCardUtil;
 
-import static com.prolific.creditcard.CreditCardUtil.AMERICAN_EXPRESS;
-import static com.prolific.creditcard.CreditCardUtil.DINERS_CLUB;
-import static com.prolific.creditcard.CreditCardUtil.DISCOVER;
-import static com.prolific.creditcard.CreditCardUtil.MASTERCARD;
-import static com.prolific.creditcard.CreditCardUtil.VISA;
+import static com.prolificinteractive.creditcard.CreditCardUtil.*;
 
 public class CreditCardTextWatcher implements TextWatcher {
 

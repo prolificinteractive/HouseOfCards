@@ -1,4 +1,4 @@
-package com.prolific.creditcard;
+package com.prolificinteractive.creditcard;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;

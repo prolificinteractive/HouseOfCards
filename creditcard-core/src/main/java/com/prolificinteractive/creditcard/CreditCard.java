@@ -1,4 +1,4 @@
-package com.prolific.creditcard;
+package com.prolificinteractive.creditcard;
 
 import java.util.regex.Pattern;
 

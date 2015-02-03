@@ -1,4 +1,4 @@
-package com.prolific.creditcard;
+package com.prolificinteractive.creditcard;
 
 import java.security.InvalidParameterException;
 import java.util.LinkedHashMap;
@@ -6,11 +6,8 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import org.junit.Test;
 
-import static com.prolific.creditcard.CreditCardUtil.AMERICAN_EXPRESS;
-import static com.prolific.creditcard.CreditCardUtil.DINERS_CLUB;
-import static com.prolific.creditcard.CreditCardUtil.DISCOVER;
-import static com.prolific.creditcard.CreditCardUtil.MASTERCARD;
-import static com.prolific.creditcard.CreditCardUtil.VISA;
+import static com.prolificinteractive.creditcard.CreditCardUtil.*;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
