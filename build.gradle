@@ -13,6 +13,8 @@ buildscript {
 }
 
 allprojects {
+  group 'com.prolificinteractive'
+  version '1.0.0'
   repositories {
     jcenter()
   }
