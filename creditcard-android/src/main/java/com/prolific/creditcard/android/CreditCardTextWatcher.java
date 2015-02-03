@@ -1,23 +1,41 @@
 package com.prolific.creditcard.android;
 
 import android.text.Editable;
+import android.text.Selection;
 import android.text.TextWatcher;
-import android.widget.EditText;
+import com.prolific.creditcard.CreditCard;
 import com.prolific.creditcard.CreditCardUtil;
-import java.lang.ref.WeakReference;
+
+import static com.prolific.creditcard.CreditCardUtil.AMERICAN_EXPRESS;
+import static com.prolific.creditcard.CreditCardUtil.DINERS_CLUB;
+import static com.prolific.creditcard.CreditCardUtil.DISCOVER;
+import static com.prolific.creditcard.CreditCardUtil.MASTERCARD;
+import static com.prolific.creditcard.CreditCardUtil.VISA;
 
 public class CreditCardTextWatcher implements TextWatcher {
 
-  final WeakReference<EditText> weakReference;
   final CreditCardUtil cardUtil;
 
-  boolean changingText;
-  int cursorPos;
-  int editVelocity;
+  boolean changingText = false;
+  int cursorPos = 0;
+  int editVelocity = 0;
 
-  public CreditCardTextWatcher(EditText editText, CreditCardUtil creditCardUtil) {
-    weakReference = new WeakReference<EditText>(editText);
+  public CreditCardTextWatcher(CreditCardUtil creditCardUtil) {
     cardUtil = creditCardUtil;
+  }
+
+  public CreditCardTextWatcher(CreditCard... cards) {
+    this(new CreditCardUtil(cards));
+  }
+
+  public CreditCardTextWatcher() {
+    this(
+        VISA,
+        MASTERCARD,
+        AMERICAN_EXPRESS,
+        DISCOVER,
+        DINERS_CLUB
+    );
   }
 
   @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -38,11 +56,6 @@ public class CreditCardTextWatcher implements TextWatcher {
   }
 
   void setText(Editable s) {
-    EditText editText = weakReference.get();
-    if (editText == null) {
-      return;
-    }
-
     String formattedText = cardUtil.formatForViewing(s, cardUtil.findCardType(s.toString()));
     s.replace(0, s.length(), formattedText);
 
@@ -62,7 +75,7 @@ public class CreditCardTextWatcher implements TextWatcher {
       cursorPos -= 1;
     }
     if (cursorPos != i) {
-      editText.setSelection(cursorPos);
+      Selection.setSelection(s, cursorPos);
     }
   }
 }
