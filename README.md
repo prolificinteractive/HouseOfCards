@@ -1,17 +1,14 @@
 HouseOfCards
 ============
 
-Credit Card Validation
------
+##### Tools for working with a house of (credit) cards.
 
 ![FRANK UNDERWOOD](http://img4.wikia.nocookie.net/__cb20140215085441/house-of-cards/images/9/9f/Season_2_Chapter_26.jpg)
-
-Tools for working with a house of (credit) cards.
 
 Usage
 -----
 
-It's as simple as:
+Add `compile 'com.prolificinteractive:houseofcards:1.0.0'` to your dependencies, then it's as simple as:
 
 ```
 editText.addTextChangedListener(new CreditCardTextWatcher());
