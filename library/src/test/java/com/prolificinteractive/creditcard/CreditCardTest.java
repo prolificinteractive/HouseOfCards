@@ -6,8 +6,11 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import org.junit.Test;
 
-import static com.prolificinteractive.creditcard.CreditCardUtil.*;
-
+import static com.prolificinteractive.creditcard.CreditCardUtil.AMERICAN_EXPRESS;
+import static com.prolificinteractive.creditcard.CreditCardUtil.DINERS_CLUB;
+import static com.prolificinteractive.creditcard.CreditCardUtil.DISCOVER;
+import static com.prolificinteractive.creditcard.CreditCardUtil.MASTERCARD;
+import static com.prolificinteractive.creditcard.CreditCardUtil.VISA;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

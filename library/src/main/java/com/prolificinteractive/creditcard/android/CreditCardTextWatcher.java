@@ -6,7 +6,11 @@ import android.text.TextWatcher;
 import com.prolificinteractive.creditcard.CreditCard;
 import com.prolificinteractive.creditcard.CreditCardUtil;
 
-import static com.prolificinteractive.creditcard.CreditCardUtil.*;
+import static com.prolificinteractive.creditcard.CreditCardUtil.AMERICAN_EXPRESS;
+import static com.prolificinteractive.creditcard.CreditCardUtil.DINERS_CLUB;
+import static com.prolificinteractive.creditcard.CreditCardUtil.DISCOVER;
+import static com.prolificinteractive.creditcard.CreditCardUtil.MASTERCARD;
+import static com.prolificinteractive.creditcard.CreditCardUtil.VISA;
 
 /**
  * A {@linkplain android.text.TextWatcher} that will format credit card numbers as the user types
@@ -20,7 +24,9 @@ public class CreditCardTextWatcher implements TextWatcher {
   int editVelocity = 0;
 
   /**
-   * Create an instance that will use the provided {@linkplain com.prolificinteractive.creditcard.CreditCardUtil} for validation and formatting
+   * Create an instance that will use the provided {@linkplain com.prolificinteractive.creditcard.CreditCardUtil}
+   * for validation and formatting
+   *
    * @param creditCardUtil an instance to use
    */
   public CreditCardTextWatcher(CreditCardUtil creditCardUtil) {
@@ -28,7 +34,9 @@ public class CreditCardTextWatcher implements TextWatcher {
   }
 
   /**
-   * Create an instance that will only format for the provided {@linkplain com.prolificinteractive.creditcard.CreditCard}s
+   * Create an instance that will only format for the provided {@linkplain
+   * com.prolificinteractive.creditcard.CreditCard}s
+   *
    * @param cards cards to format for
    */
   public CreditCardTextWatcher(CreditCard... cards) {

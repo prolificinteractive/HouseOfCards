@@ -71,7 +71,6 @@ uploadArchives {
             email POM_DEVELOPER_EMAIL
           }
         }
-
       }
     }
   }

@@ -40,6 +40,7 @@ public class CreditCardUtil {
 
   /**
    * Create an instance that will only use the provided types to validate and format
+   *
    * @param creditCards a list of types to use
    */
   public CreditCardUtil(CreditCard... creditCards) {
@@ -48,17 +49,18 @@ public class CreditCardUtil {
 
   /**
    * @param cardNumber The input to clean and format
-   * @return if cardNumber matches a CreditCard, a formatted cardNumber, otherwise a cleaned version of cardNumber
+   * @return if cardNumber matches a CreditCard, a formatted cardNumber, otherwise a cleaned version
+   * of cardNumber
    */
   public String formatForViewing(CharSequence cardNumber) {
     return formatForViewing(cardNumber, findCardType(cardNumber));
   }
 
   /**
-   *
    * @param cardNumber the input to clean and format
    * @param card the CreditCard to format for, if possible
-   * @return if cardNumber matches card, a formatted cardNumber, otherwise a cleaned version of cardNumber
+   * @return if cardNumber matches card, a formatted cardNumber, otherwise a cleaned version of
+   * cardNumber
    */
   public static String formatForViewing(CharSequence cardNumber, CreditCard card) {
     // make sure the cc isn't null
