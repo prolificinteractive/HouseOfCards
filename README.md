@@ -26,6 +26,11 @@ editText.addTextChangedListener(new CreditCardTextWatcher(cardUtil));
 
 And you're not just limited to built in types! Just implement `CreditCard`!
 
+Contributing
+============
+
+Would you like to contribute? Fork us and send a pull request! Be sure to checkout our issues first.
+
 License
 =======
 
@@ -42,3 +47,9 @@ License
 >WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 >See the License for the specific language governing permissions and
 >limitations under the License.
+
+Name Disclaimer
+===============
+
+This project is in no way affiliated with the Netflix Original Series _House of Cards_ or the UK television series of the same name.
+This project is about credit card validation, not corrupt politicians.
