@@ -14,5 +14,6 @@ android {
 }
 
 dependencies {
-  compile project(':creditcard-android')
+  compile project(':library')
+  //compile 'com.prolificinteractive:houseofcards:+'
 }

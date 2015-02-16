@@ -173,7 +173,7 @@ public class CreditCardUtil {
   }
 
   /**
-   * Simple implementation for {@linkplain com.prolificinteractive.creditcard.CreditCard}
+   * Simple implementation for {@linkplain CreditCard}
    */
   protected static class Card implements CreditCard {
 

@@ -13,9 +13,14 @@ buildscript {
 }
 
 allprojects {
-  group 'com.prolificinteractive'
-  version '1.0.0'
   repositories {
     jcenter()
+    maven {
+      url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
   }
+  // Is Release Build?
+  ext.isReleaseVersion = has("release")
+  ext.versionCodeInt = getProperty('VERSION_CODE').toInteger()
+  version = VERSION_NAME
 }
