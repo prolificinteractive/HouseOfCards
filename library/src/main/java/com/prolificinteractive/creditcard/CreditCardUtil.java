@@ -1,5 +1,6 @@
 package com.prolificinteractive.creditcard;
 
+import android.widget.EditText;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,18 +14,32 @@ public class CreditCardUtil {
 
   private static final int CARD_LENGTH_FOR_TYPE = 4;
 
+  public static final Pattern CREDIT_CARD = Pattern.compile(
+      "^(?:4[0-9]{12}(?:[0-9]{3})?"              // Visa
+          + "|5[1-5][0-9]{14}"                   // MasterCard
+          + "|3[47][0-9]{13}"                    // American Express
+          + "|3(?:0[0-5]|[68][0-9])[0-9]{11}"    // Diners Club
+          + "|6(?:011|5[0-9]{2})[0-9]{12}"       // Discover
+          + "|(?:2131|1800|35\\d{3})\\d{11}"     // JCB
+          + ")$"
+  );
+
   private static final Pattern REGX_AMEX = Pattern.compile("^3[47][0-9]{13}$");
   private static final Pattern REGX_VISA = Pattern.compile("^4[0-9]{15}?");
   private static final Pattern REGX_MASTERCARD = Pattern.compile("^5[1-5][0-9]{14}$");
   private static final Pattern REGX_DISCOVER = Pattern.compile("^6(?:011|5[0-9]{2})[0-9]{12}$");
   private static final Pattern REGX_DINERS_CLUB =
       Pattern.compile("^3(?:0[0-5]|[68][0-9])[0-9]{11}$");
+  private static final Pattern REGX_JCB_15 = Pattern.compile("^(?:2131|1800)\\d{11}$");
+  private static final Pattern REGX_JCB_16 = Pattern.compile("^35[0-9]{14}$");
 
-  private static final Pattern TYPE_AMEX = Pattern.compile("^3[47][0-9]{2}$");
-  private static final Pattern TYPE_VISA = Pattern.compile("^4[0-9]{3}?");
-  private static final Pattern TYPE_MASTERCARD = Pattern.compile("^5[1-5][0-9]{2}$");
-  private static final Pattern TYPE_DISCOVER = Pattern.compile("^6(?:011|5[0-9]{2})$");
-  private static final Pattern TYPE_DINERS_CLUB = Pattern.compile("^3(?:0[0-5]|[68][0-9])[0-9]$");
+  public static final Pattern TYPE_AMEX = Pattern.compile("^3[47][0-9]{2}$");
+  public static final Pattern TYPE_VISA = Pattern.compile("^4[0-9]{3}?");
+  public static final Pattern TYPE_MASTERCARD = Pattern.compile("^5[1-5][0-9]{2}$");
+  public static final Pattern TYPE_DISCOVER = Pattern.compile("^6(?:011|5[0-9]{2})$");
+  public static final Pattern TYPE_DINERS_CLUB = Pattern.compile("^3(?:0[0-5]|[68][0-9])[0-9]$");
+  public static final Pattern TYPE_JCB_15 = Pattern.compile("^(?:2131|1800)$");
+  public static final Pattern TYPE_JCB_16 = Pattern.compile("^35[0-9]{2}$");
 
   public static final CreditCard AMERICAN_EXPRESS =
       new Card(REGX_AMEX, TYPE_AMEX, new int[] { 4, 6, 5 });
@@ -35,6 +50,10 @@ public class CreditCardUtil {
       new Card(REGX_DISCOVER, TYPE_DISCOVER, new int[] { 4, 4, 4, 4 });
   public static final CreditCard DINERS_CLUB =
       new Card(REGX_DINERS_CLUB, TYPE_DINERS_CLUB, new int[] { 4, 4, 4, 2 });
+  public static final CreditCard JCB_15 =
+      new Card(REGX_JCB_15, TYPE_JCB_15, new int[] { 4, 4, 4, 3 });
+  public static final CreditCard JCB_16 =
+      new Card(REGX_JCB_16, TYPE_JCB_16, new int[] { 4, 4, 4, 4 });
 
   private final List<CreditCard> cards;
 
@@ -44,7 +63,7 @@ public class CreditCardUtil {
    * @param creditCards a list of types to use
    */
   public CreditCardUtil(CreditCard... creditCards) {
-    cards = new ArrayList<CreditCard>(Arrays.asList(creditCards));
+    cards = new ArrayList<>(Arrays.asList(creditCards));
   }
 
   /**
@@ -138,6 +157,35 @@ public class CreditCardUtil {
     }
 
     return null;
+  }
+
+  /**
+   * @param s the card number to find type of, can be partial
+   * @return the instance of CreditCard matching s, or null if no match
+   */
+  public static boolean equalTypeCard(CharSequence s, CreditCard card) {
+    String cardNumber = clean(s);
+    if (cardNumber.length() >= CARD_LENGTH_FOR_TYPE) {
+      if (card.getTypePattern()
+          .matcher(cardNumber.subSequence(0, CARD_LENGTH_FOR_TYPE))
+          .matches()) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  public static boolean isAmex(EditText editText) {
+    return AMERICAN_EXPRESS.getTypePattern()
+        .matcher(editText.getText().subSequence(0, CARD_LENGTH_FOR_TYPE))
+        .matches();
+  }
+
+  public static boolean isDinersClub(EditText editText) {
+    return DINERS_CLUB.getTypePattern()
+        .matcher(editText.getText().subSequence(0, CARD_LENGTH_FOR_TYPE))
+        .matches();
   }
 
   /**

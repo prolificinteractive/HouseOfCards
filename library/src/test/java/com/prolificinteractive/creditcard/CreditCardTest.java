@@ -9,6 +9,8 @@ import org.junit.Test;
 import static com.prolificinteractive.creditcard.CreditCardUtil.AMERICAN_EXPRESS;
 import static com.prolificinteractive.creditcard.CreditCardUtil.DINERS_CLUB;
 import static com.prolificinteractive.creditcard.CreditCardUtil.DISCOVER;
+import static com.prolificinteractive.creditcard.CreditCardUtil.JCB_15;
+import static com.prolificinteractive.creditcard.CreditCardUtil.JCB_16;
 import static com.prolificinteractive.creditcard.CreditCardUtil.MASTERCARD;
 import static com.prolificinteractive.creditcard.CreditCardUtil.VISA;
 import static org.junit.Assert.assertEquals;
@@ -23,7 +25,9 @@ public class CreditCardTest {
       MASTERCARD,
       DISCOVER,
       AMERICAN_EXPRESS,
-      DINERS_CLUB
+      DINERS_CLUB,
+      JCB_15,
+      JCB_16
   );
 
   static final Map<CreditCard, String[]> CARD_MAP = new LinkedHashMap<CreditCard, String[]>() {{
@@ -32,6 +36,8 @@ public class CreditCardTest {
     put(DISCOVER, new String[] { "6011016011016011", "6011000995500000", "6011000990139424" });
     put(AMERICAN_EXPRESS, new String[] { "371449635398431", "343434343434343", "371144371144376" });
     put(DINERS_CLUB, new String[] { "30569309025904", "36110361103612" });
+    put(JCB_15, new String[] { "213193090259044", "180093090259044" });
+    put(JCB_16, new String[] { "3500930902590445" });
   }};
 
   static final Map<int[], Map<String, String>> FORMAT_LIST =

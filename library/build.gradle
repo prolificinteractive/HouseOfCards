@@ -3,12 +3,12 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 
 android {
-  compileSdkVersion 21
-  buildToolsVersion "21.1.2"
+  compileSdkVersion 23
+  buildToolsVersion "23.0.2"
 
   defaultConfig {
     minSdkVersion 7
-    targetSdkVersion 21
+    targetSdkVersion 23
     versionCode project.ext.versionCodeInt
     versionName version
   }
@@ -25,6 +25,10 @@ artifacts {
 
 signing {
   sign configurations.archives
+}
+
+dependencies {
+  testCompile 'junit:junit:4.12'
 }
 
 uploadArchives {
