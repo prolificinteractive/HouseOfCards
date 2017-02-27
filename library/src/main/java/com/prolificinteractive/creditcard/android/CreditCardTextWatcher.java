@@ -9,6 +9,8 @@ import com.prolificinteractive.creditcard.CreditCardUtil;
 import static com.prolificinteractive.creditcard.CreditCardUtil.AMERICAN_EXPRESS;
 import static com.prolificinteractive.creditcard.CreditCardUtil.DINERS_CLUB;
 import static com.prolificinteractive.creditcard.CreditCardUtil.DISCOVER;
+import static com.prolificinteractive.creditcard.CreditCardUtil.JCB_15;
+import static com.prolificinteractive.creditcard.CreditCardUtil.JCB_16;
 import static com.prolificinteractive.creditcard.CreditCardUtil.MASTERCARD;
 import static com.prolificinteractive.creditcard.CreditCardUtil.VISA;
 
@@ -58,7 +60,9 @@ public class CreditCardTextWatcher implements TextWatcher {
         MASTERCARD,
         AMERICAN_EXPRESS,
         DISCOVER,
-        DINERS_CLUB
+        DINERS_CLUB,
+        JCB_15,
+        JCB_16
     );
   }
 
