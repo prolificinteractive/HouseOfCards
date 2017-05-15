@@ -1,5 +1,5 @@
 # House Of Cards
-[![Travis build status](https://img.shields.io/travis/prolificinteractive/patrons.svg?style=flat-square)](https://travis-ci.org/prolificinteractive/patrons)
+[![Travis build status](https://img.shields.io/travis/prolificinteractive/houseofcards.svg?style=flat-square)](https://travis-ci.org/prolificinteractive/houseofcards)
 
 _Tools for working with a house of (credit) cards._
 
