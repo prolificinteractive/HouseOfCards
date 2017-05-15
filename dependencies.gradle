@@ -1,0 +1,11 @@
+ext {
+  minSdkVersion = 7
+  compileSdkVersion = 25
+  targetSdkVersion = 25
+  buildToolsVersion = '25.0.2'
+
+  junitVersion = '4.11'
+
+  // Test
+  junit = "junit:junit:$junitVersion"
+}

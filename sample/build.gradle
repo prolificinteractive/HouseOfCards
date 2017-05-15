@@ -1,20 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.3"
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
 
   defaultConfig {
     applicationId "com.prolificinteractive.houseofcards.sample"
+
     minSdkVersion 14
-    targetSdkVersion 23
-    versionCode project.ext.versionCodeInt
-    versionName version
+    targetSdkVersion rootProject.ext.targetSdkVersion
+
+    versionCode 1
+    versionName "1.0"
   }
 }
 
 dependencies {
   compile project(':library')
-  compile 'com.android.support:design:23.4.0'
+  compile 'com.android.support:design:25.3.1'
   //compile 'com.prolificinteractive:houseofcards:+'
 }
